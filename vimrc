@@ -9,11 +9,16 @@ set backspace=indent,eol,start
 call plug#begin('~/.vim/plugged')
 
 Plug 'joonty/vim-phpqa'
+Plug 'scrooloose/nerdtree'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
 syntax on
 filetype plugin indent on
+colorscheme Tomorrow-Night
+
 
 " Tabs
 set tabstop=4
@@ -39,5 +44,19 @@ set gdefault  " use the 'g' flag by default
 
 " allow the cursor go anywhere in visual block mode.
 set virtualedit+=block
+
+" NERDTree
+set <c-n> :NERDTreeToggle<CR>
+
+" {{{ Functions
+"{{{  Toggle Line Numbers
+function! ToggleLineNumber()
+    if(&relativenumber == 1)
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+" }}}
 
 
