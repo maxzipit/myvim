@@ -12,12 +12,16 @@ Plug 'joonty/vim-phpqa'
 Plug 'scrooloose/nerdtree'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-airlie/vim-airline'
+Plug 'vim-airlie/vim-arline-themes'
 
 call plug#end()
 
 syntax on
 filetype plugin indent on
 colorscheme Tomorrow-Night
+
+let mapleader=","
 
 
 " Tabs
@@ -45,13 +49,11 @@ set gdefault  " use the 'g' flag by default
 " allow the cursor go anywhere in visual block mode.
 set virtualedit+=block
 
-" NERDTree
-set <c-n> :NERDTreeToggle<CR>
-
 " {{{ Functions
 "{{{  Toggle Line Numbers
 function! ToggleLineNumber()
     if(&relativenumber == 1)
+        set norelativenumber
         set number
     else
         set relativenumber
@@ -59,4 +61,20 @@ function! ToggleLineNumber()
 endfunc
 " }}}
 
+" }}}
 
+" {{{ Settings
+
+let g:NERDTreeMapHelp = "h"
+
+"}}}
+
+" {{{ keymaps
+
+
+" Toggle LineNumbers
+nnoremap <Leader>l :call ToggleLineNumber()<CR>
+" NERDTree
+nnoremap <leader>n :NERDTreeToggle<CR>
+
+" }}}
